@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="add-tarefa">
+    <input type="text" placeholder="Adicionar nova tarefa..." [(ngModel)]="novaTarefaTitulo">
+    <button (click)="adicionarTarefa()">Adicionar</button>
+  </div>
+
+  <ul class="lista">
+    <li *ngFor="let tarefa of tarefas"
+        [class.concluida]="tarefa.concluida"
+        (click)="alternarStatusTarefa(tarefa.id)">
+      {{ tarefa.titulo }}
+      <button (click)="$event.stopPropagation(); removerTarefa(tarefa.id)" style="float: right; background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remover</button>
+    </li>
+  </ul>
+</div>
